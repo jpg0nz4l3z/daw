@@ -1,0 +1,45 @@
+@startuml
+title Ejercicio 2
+
+state 1 #LightGreen: x < 0
+state 2 : x = -x
+state 3 : x = x
+state 4 : print(x)
+state 5 : Exit
+
+1 --> 2 : true
+1 --> 3 : false
+2 --> 4
+3 --> 4
+4 --> 5
+
+note as n1
+    Complejidad ciclomática:
+
+    * Nº decisiones del código: 1
+    * V(G) = 1 + 1 = 2
+
+    * 1) Método decisiones:
+    ** V(G) = numero de decisiones + 1
+
+    * 2) Método E - N + 2P:
+    ** V(G) = E - N + 2P
+
+    ** N (nodos) = 5
+    ** E (aristas) = 5
+    ** P (componentes) = 1
+
+    ** V(G) = 5 - 5 + 2(1) = 2
+
+    * Conjunto de caminos básicos: 2
+    ** Camino 1: 1 -> 2 -> 4 -> 5
+    ** Camino 2: 1 -> 3 -> 4 -> 5
+
+    * Grafo de flujo
+    ** N1: Evaluar x < 0
+    ** N2: x = -x
+    ** N3: x = x
+    ** N4: imprimir x
+    ** N5: Salida
+end note
+@enduml

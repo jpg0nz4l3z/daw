@@ -1,0 +1,33 @@
+@startuml 
+
+actor usuario
+activate usuario
+participant "Sistema de autenticación" as sistema
+
+usuario -> sistema: Solicitar recuperar contraseña
+
+activate sistema
+database "Base de datos" as db
+
+sistema -> usuario: Requerir email
+
+usuario -> sistema: Introducir email
+
+sistema -> db: Verificar existencia del email
+activate db
+
+db -> sistema: Confirmar existencia
+deactivate db
+participant "Servidor de correo" as servidor_correo
+
+alt correo válido
+    sistema -> sistema: Generar código de verificación
+    sistema -> servidor_correo: Enviar código al usuario
+    activate servidor_correo
+    servidor_correo -> sistema: Confirmar envio de correo 
+    deactivate servidor_correo
+    usuario -> usuario: Revisar bandeja\nde entrada y\nobtener el código
+end
+
+
+@enduml

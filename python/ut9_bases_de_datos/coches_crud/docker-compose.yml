@@ -1,0 +1,15 @@
+name: coches-crud-mysql
+
+services: 
+  
+  mysql-db:  
+    image: mysql 
+    container_name: mysql-db  
+    environment:  
+      MYSQL_ROOT_PASSWORD: quevedo
+      MYSQL_DATABASE: cochesdb
+      MYSQL_USER: quevedo
+      MYSQL_PASSWORD: 1234
+    ports:  
+      - "3319:3306"  
+  

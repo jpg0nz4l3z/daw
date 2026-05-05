@@ -1,0 +1,48 @@
+@startuml
+title Ejercicio 5
+
+state 1 : i = 0
+state 2 #LightGreen: i < 3
+state 3 : print(i)
+state 4 : i += 1
+state 5 : print("Hecho")
+state 6 : Exit
+
+1 --> 2
+2 --> 3 : true
+2 --> 5 : false
+3 --> 4
+4 --> 2
+5 --> 6
+
+note as n1
+    Complejidad ciclomática:
+
+    * Nº decisiones del código: 1
+    * V(G) = 1 + 1 = 2
+
+    * 1) Método decisiones:
+    ** V(G) = numero de decisiones + 1
+
+    * 2) Método E - N + 2P:
+    ** V(G) = E - N + 2P
+
+    ** N (nodos) = 6
+    ** E (aristas) = 6
+    ** P (componentes) = 1
+
+    ** V(G) = 6 - 6 + 2(1) = 2
+
+    * Conjunto de caminos básicos: 2
+    ** Camino 1: 1 -> 2 -> 5 -> 6
+    ** Camino 2: 1 -> 2 -> 3 -> 4 -> 2 -> 5 -> 6
+
+    * Grafo de flujo
+    ** N1: inicializar i = 0
+    ** N2: while i < 3
+    ** N3: imprimir i
+    ** N4: incrementar i
+    ** N5: imprimir Hecho
+    ** N6: Salida
+end note
+@enduml

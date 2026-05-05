@@ -1,0 +1,53 @@
+@startuml
+title Ejercicio 7
+
+state 1 : x = 0
+state 2 #LightGreen: while x < 5
+state 3 #LightGreen: x == 3
+state 4 : print("Tres")
+state 5 : x += 1
+state 6 : print("Fin")
+state 7 : Exit
+
+1 --> 2
+2 --> 3 : true
+2 --> 6 : false
+3 --> 4 : true
+3 --> 5 : false
+4 --> 5
+5 --> 2
+6 --> 7
+
+note as n1
+    Complejidad ciclomática:
+
+    * Nº decisiones del código: 2
+    * V(G) = 2 + 1 = 3
+
+    * 1) Método decisiones:
+    ** V(G) = numero de decisiones + 1
+
+    * 2) Método E - N + 2P:
+    ** V(G) = E - N + 2P
+
+    ** N (nodos) = 7
+    ** E (aristas) = 8
+    ** P (componentes) = 1
+
+    ** V(G) = 8 - 7 + 2(1) = 3
+
+    * Conjunto de caminos básicos: 3
+    ** Camino 1: 1 -> 2 -> 6 -> 7
+    ** Camino 2: 1 -> 2 -> 3 -> 5 -> 2 -> 6 -> 7
+    ** Camino 3: 1 -> 2 -> 3 -> 4 -> 5 -> 2 -> 6 -> 7
+
+    * Grafo de flujo
+    ** N1: inicializar x = 0
+    ** N2: While x < 5
+    ** N3: Evaluar x == 3
+    ** N4: imprimir Tres
+    ** N5: incrementar x
+    ** N6: imprimir Fin
+    ** N7: Salida
+end note
+@enduml

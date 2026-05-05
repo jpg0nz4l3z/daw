@@ -1,0 +1,14 @@
+name: personas-crud
+
+services: 
+  
+  mysql-db:  
+    image: mysql 
+    container_name: crud-json-db 
+    environment:  
+      MYSQL_ROOT_PASSWORD: quevedo
+      MYSQL_DATABASE: personas
+      MYSQL_USER: quevedo
+      MYSQL_PASSWORD: 1234
+    ports:  
+      - "3320:3306"  

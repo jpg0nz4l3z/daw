@@ -1,0 +1,22 @@
+{%extends "fragments/base.html" %}
+
+{% block content %}
+
+    <div class="form-container">
+        <h1>📝 Nueva Serie</h1>
+        <form method="post" action="/series/new" enctype="application/x-www-form-urlencoded">
+            <div class="form-group">
+                <label for="nombre">Nombre de la Serie:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Introduce el nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha_estreno">Fecha de estreno:</label>
+                <input type="date" id="fecha_estreno" name="fecha_estreno" required>
+            </div>
+            
+            <button type="submit">Guardar Serie</button>
+        </form>
+        
+        <a href="/series" class="back-link">← Volver a la lista de series</a>
+    </div>
+{% endblock %}

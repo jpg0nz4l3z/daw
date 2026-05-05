@@ -1,0 +1,17 @@
+#
+# Para instalar las dependencias del proyecto, 
+# primero instala un entorno virtual (opcional pero recomendado):
+# python -m venv .venv
+#
+# Luego activa el entorno virtual:
+# En Windows:
+# .venv\Scripts\activate
+# En macOS/Linux:
+# source .venv/bin/activate
+#
+# Finalmente, para instalar las dependencias listadas en este archivo,
+# ejecuta el siguiente comando en tu terminal:
+# pip install -r requirements.txt
+
+pymysql
+cryptography

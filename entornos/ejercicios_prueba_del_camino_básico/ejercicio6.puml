@@ -1,0 +1,47 @@
+@startuml
+title Ejercicio 6
+
+state 1 : for i in range(3)
+state 2 #LightGreen: i % 2 == 0
+state 3 : print(i, "par")
+state 4 : print(i, "impar")
+state 5 : Exit
+
+1 --> 2
+2 --> 3 : true
+2 --> 4 : false
+3 --> 1
+4 --> 1
+1 --> 5 : fin bucle
+
+note as n1
+    Complejidad ciclomática:
+
+    * Nº decisiones del código: 2
+    * V(G) = 2 + 1 = 3
+
+    * 1) Método decisiones:
+    ** V(G) = numero de decisiones + 1
+
+    * 2) Método E - N + 2P:
+    ** V(G) = E - N + 2P
+
+    ** N (nodos) = 5
+    ** E (aristas) = 6
+    ** P (componentes) = 1
+
+    ** V(G) = 6 - 5 + 2(1) = 3
+
+    * Conjunto de caminos básicos: 3
+    ** Camino 1: 1 -> 5
+    ** Camino 2: 1 -> 2 -> 3 -> 1 -> 5
+    ** Camino 3: 1 -> 2 -> 4 -> 1 -> 5
+
+    * Grafo de flujo
+    ** N1: for i in range(3)
+    ** N2: Evaluar i % 2 == 0
+    ** N3: imprimir par
+    ** N4: imprimir impar
+    ** N5: Salida
+end note
+@enduml

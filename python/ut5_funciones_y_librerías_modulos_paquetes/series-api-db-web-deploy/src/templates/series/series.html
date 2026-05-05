@@ -1,0 +1,25 @@
+{% extends "fragments/base.html" %}
+{% block title %}Series{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>FECHA ESTRENO</th>
+        <th>Operaciones</th>
+    </tr>
+    {% for serie in series %}
+    <tr>
+        <td>{{ serie.id }}</td>
+        <td>{{ serie.nombre }}</td>
+        <td>{{ serie.fecha_estreno }}</td>
+        <td><a href="/series/{{ serie.id }}">Ver detalle</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+{% block footer %}
+Autor: Carlos González
+{% endblock %}

@@ -1,0 +1,72 @@
+@startuml
+title Ejercicio 9
+
+state 1 : x = int(input())
+state 2 : y = int(input())
+state 3 #LightGreen: x > 0
+state 4 #LightGreen: y > 0
+state 5 : print("Cuadrante I")
+state 6 : print("Cuadrante IV")
+state 7 #LightGreen: x < 0
+state 8 #LightGreen: y > 0
+state 9 : print("Cuadrante II")
+state 10 : print("Cuadrante III")
+state 11 : print("Eje")
+state 12 : Exit
+
+1 --> 2
+2 --> 3
+3 --> 4 : true
+3 --> 7 : false
+4 --> 5 : true
+4 --> 6 : false
+5 --> 12
+6 --> 12
+7 --> 8 : true
+7 --> 11 : false
+8 --> 9 : true
+8 --> 10 : false
+9 --> 12
+10 --> 12
+11 --> 12
+
+note as n1
+    Complejidad ciclomática:
+
+    * Nº decisiones del código: 4
+    * V(G) = 4 + 1 = 5
+
+    * 1) Método decisiones:
+    ** V(G) = numero de decisiones + 1
+
+    * 2) Método E - N + 2P:
+    ** V(G) = E - N + 2P
+
+    ** N (nodos) = 12
+    ** E (aristas) = 15
+    ** P (componentes) = 1
+
+    ** V(G) = 15 - 12 + 2(1) = 5
+
+    * Conjunto de caminos básicos: 5
+    ** Camino 1: 1 -> 2 -> 3 -> 4 -> 5 -> 12
+    ** Camino 2: 1 -> 2 -> 3 -> 4 -> 6 -> 12
+    ** Camino 3: 1 -> 2 -> 3 -> 7 -> 8 -> 9 -> 12
+    ** Camino 4: 1 -> 2 -> 3 -> 7 -> 8 -> 10 -> 12
+    ** Camino 5: 1 -> 2 -> 3 -> 7 -> 11 -> 12
+
+    * Grafo de flujo
+    ** N1: leer x
+    ** N2: leer y
+    ** N3: Evaluar x > 0
+    ** N4: Evaluar y > 0
+    ** N5: imprimir Cuadrante I
+    ** N6: imprimir Cuadrante IV
+    ** N7: Evaluar x < 0
+    ** N8: Evaluar y > 0
+    ** N9: imprimir Cuadrante II
+    ** N10: imprimir Cuadrante III
+    ** N11: imprimir Eje
+    ** N12: Salida
+end note
+@enduml

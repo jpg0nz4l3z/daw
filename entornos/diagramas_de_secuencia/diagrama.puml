@@ -1,0 +1,61 @@
+@startuml
+title Recuperación de contraseña en un sistema web
+
+actor Usuario
+participant "Sistema de autenticación" as Sistema
+database "Base de datos" as BD
+participant "Servidor de correo" as Correo
+
+Usuario -> Sistema: Solicitar recuperación
+activate Sistema
+
+Sistema -> Usuario: Solicitar correo
+Usuario -> Sistema: Introducir correo
+
+Sistema -> BD: Verificar correo
+activate BD
+BD --> Sistema: Resultado
+deactivate BD
+
+alt Correo válido
+    Sistema -> Sistema: Generar código
+
+    Sistema -> Correo: Enviar código
+    activate Correo
+    Correo --> Usuario: Código de verificación
+    deactivate Correo
+
+    loop proceso_bloqueado == false
+        Usuario -> Sistema: Introducir código
+        Sistema -> Sistema: Validar código
+
+        alt Código correcto
+            Sistema -> Usuario: Permitir nueva contraseña
+            Usuario -> Sistema: Introducir nueva contraseña
+
+            Sistema -> BD: Actualizar contraseña
+            activate BD
+            BD --> Sistema: Contraseña actualizada
+            deactivate BD
+
+            Sistema --> Usuario: Confirmación de éxito
+    
+        else Código incorrecto
+            alt intento == 3
+                Sistema -> Sistema: Bloquear proceso
+                Sistema --> Usuario: Proceso bloqueado
+            else Aún quedan intentos
+                Sistema --> Usuario: Error, intentar de nuevo
+            end
+        end
+    end
+
+else Correo no válido
+    Sistema --> Usuario: Correo no registrado
+end
+
+deactivate Sistema
+destroy Correo
+destroy BD 
+destroy Sistema
+@enduml

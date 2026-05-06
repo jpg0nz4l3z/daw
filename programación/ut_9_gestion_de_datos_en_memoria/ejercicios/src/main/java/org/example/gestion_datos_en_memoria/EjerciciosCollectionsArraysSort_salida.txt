@@ -1,0 +1,78 @@
+
+========== 01 - Arrays.sort con int[] ==========
+[1, 2, 4, 5, 9]
+
+========== 02 - Arrays.sort con String[] ==========
+[Ana, Luis, Marta]
+
+========== 03 - Arrays.sort descendente con Integer[] ==========
+[9, 5, 4, 2, 1]
+
+========== 04 - Arrays.binarySearch ==========
+Array ordenado: [1, 2, 4, 5, 9]
+Posici?n del 4: 2
+
+========== 05 - Collections.sort con List<Integer> ==========
+[1, 2, 4, 5, 9]
+
+========== 06 - Collections.sort por longitud ==========
+[Ana, Luis, Marta, Alejandro]
+
+========== 07 - Collections.sort descendente ==========
+[9, 5, 4, 2, 1]
+
+========== 08 - Comparable por nombre ==========
+[Ana, Luis, Marta]
+
+========== 09 - Comparator por edad ==========
+[Luis(20), Marta(25), Ana(30)]
+
+========== 10 - Comparator.comparing ==========
+[Luis(20), Marta(25), Ana(30)]
+
+========== 11 - Orden m?ltiple: edad y nombre ==========
+[Luis(20), Marta(20), Ana(30), Carlos(30)]
+
+========== 12 - Collections.max y Collections.min ==========
+M?ximo: 9
+M?nimo: 1
+
+========== 13 - Collections.shuffle ==========
+[4, 3, 1, 2, 5]
+
+========== 14 - Collections.reverse ==========
+[5, 4, 3, 2, 1]
+
+========== 15 - Collections.frequency ==========
+Ana aparece 3 veces
+
+========== 16 - Stream.sorted natural ==========
+Original: [5, 2, 9, 1, 4]
+Ordenada: [1, 2, 4, 5, 9]
+
+========== 17 - Stream.sorted descendente ==========
+[9, 5, 4, 2, 1]
+
+========== 18 - Stream filter + sorted ==========
+[2, 4, 6, 8]
+
+========== 19 - TreeSet: ?nicos y ordenados ==========
+[1, 2, 4, 5, 9]
+
+========== 20 - Contador con HashMap ==========
+{java=3, set=1, map=2}
+
+========== 21 - Pipeline completo ==========
+Suma de cuadrados pares ordenados: 84
+
+========== 22 - Comparator longitud inversa ==========
+[programacion, colecciones, java, sol]
+
+========== 23 - Objetos: nota descendente y nombre ==========
+[Ana(9.0), Carlos(9.0), Luis(8.5), Marta(8.5)]
+
+========== 24 - Stream max con Optional ==========
+M?s largo: Alejandro
+
+========== 25 - Collectors.groupingBy por longitud ==========
+{3=[Ana], 4=[Luis, Juan], 5=[Marta], 9=[Alejandro]}

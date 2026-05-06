@@ -1,0 +1,218 @@
+
+--- 01. Almacenamiento dinamico con ArrayList ---
+Usuarios: [Ana, Luis, Marta]
+
+--- 02. Variables independientes vs lista ---
+Variables sueltas: Ana, Luis, Marta
+Ana
+Luis
+Marta
+
+--- 03. Array: declaracion, acceso y recorrido ---
+Valor en posicion 2: 30
+numeros[0] = 10
+numeros[1] = 20
+numeros[2] = 30
+numeros[3] = 40
+numeros[4] = 50
+
+--- 04. Inicializacion directa, modificacion y matriz ---
+Array modificado: [10, 25, 30, 40, 50]
+matriz[0][1] = 5
+
+--- 05. Patrones Big-O: O(1), O(n), O(log n) ---
+O(1): 3
+O(n), suma: 36
+O(log n), pasos dividiendo entre 2: 3
+
+--- 06. Limitaciones de arrays ---
+Array redimensionado: [1, 2, 3, 4, 5, 0, 0, 0, 0, 0]
+Insertado al principio: [99, 1, 2, 3, 4, 5]
+Posicion de 4: 3
+
+--- 07. Coleccion: interfaz vs implementacion ---
+[Ana, Luis]
+[Ana, Luis, Marta]
+
+--- 08. Genericos y tipado seguro ---
+Ana
+5
+
+--- 09. Map no es Collection y formas de recorrerlo ---
+Claves: [Ana, Luis]
+Valores: [25, 30]
+Ana -> 25
+Luis -> 30
+
+--- 10. Elegir entre List, Set y Map ---
+List permite orden y duplicados: [Ana, Luis, Ana]
+Set elimina duplicados: [111A, 222B]
+Map busca por clave: 8.5
+
+--- 11. ArrayList: gestion de pedidos ---
+Pedido1
+Pedido2
+Pedido3
+Resultado final: [PedidoModificado, Pedido3]
+
+--- 12. Patrones de creacion de List ---
+[Ana]
+[Ana, Luis, Marta]
+[Carlos, Luis, Marta]
+[Carlos, Luis, Marta, Eva]
+
+--- 13. LinkedList como cola FIFO ---
+Procesando: Pedido1
+Procesando: Pedido2
+Procesando: Pedido3
+
+--- 14. Iterator y eliminacion segura ---
+[Ana, Marta]
+
+--- 15. HashSet: unicidad y pertenencia ---
+true
+true
+false
+Contiene Ana? true
+[Ana, Luis]
+
+--- 16. Union, interseccion y diferencia con Set ---
+Union: [Marta, Ana, Luis]
+Interseccion: [Luis]
+Diferencia A-B: [Ana]
+
+--- 17. LinkedHashSet mantiene orden de insercion ---
+[Luis, Ana, Marta]
+
+--- 18. TreeSet: orden natural ---
+Ordenado y sin duplicados: [4, 12, 60]
+Primero: 4
+Ultimo: 60
+Mayor o igual que 10: 12
+
+--- 19. TreeSet con Comparable ---
+[Ana(25), Luis(30), Zoe(40)]
+
+--- 20. Comparator: clase anonima, lambda y comparing ---
+Clase anonima: [Marta(20), Ana(25), Luis(30)]
+Lambda edad desc: [Luis(30), Ana(25), Marta(20)]
+Comparator.comparing nombre: [Ana(25), Luis(30), Marta(20)]
+
+--- 21. HashSet con objetos y contrato equals/hashCode ---
+[Ana(25), Luis(30)]
+
+--- 22. HashMap: acceso por clave ---
+Usuario u2: Luis
+
+--- 23. HashMap contador de frecuencias ---
+{java=3, set=1, map=2}
+
+--- 24. Recorrido correcto de Map con entrySet ---
+java -> 3
+set -> 1
+map -> 2
+
+--- 25. LinkedHashMap mantiene orden de insercion ---
+{100=Ana, 102=Marta}
+
+--- 26. TreeMap: orden natural y comparator ---
+Orden natural clave: {Ana=1, Luis=2, Marta=3}
+Orden inverso clave: {Marta=3, Luis=2, Ana=1}
+
+--- 27. Interfaz funcional con clase anonima ---
+3 + 4 = 7
+
+--- 28. Lambda con interfaz propia ---
+Pares: [2, 4, 6]
+Suma pares: 12
+Producto pares: 48
+
+--- 29. Lambdas con Predicate, Function, Consumer y Supplier ---
+true
+25
+Mensaje: Hola mundo
+Aleatorio: 0.6728010759792897
+
+--- 30. Runnable con lambda ---
+Ejecutando tarea en hilo
+
+--- 31. forEach y removeIf con lambdas ---
+Dato: 1
+Dato: 2
+Dato: 3
+Dato: 4
+Dato: 5
+Dato: 6
+Tras eliminar pares: [1, 3, 5]
+
+--- 32. Primer pipeline Stream: filter, map, collect ---
+[4, 16, 36]
+
+--- 33. Evaluacion perezosa de Streams ---
+filter: 1
+filter: 2
+map: 2
+forEach: 4
+filter: 3
+filter: 4
+map: 4
+forEach: 16
+filter: 5
+filter: 6
+map: 6
+forEach: 36
+
+--- 34. map(): transformacion y cambio de tipo ---
+[1, 4, 9, 16]
+[3, 4]
+
+--- 35. sorted(): orden natural y comparator ---
+[1, 2, 4, 5, 9]
+[Ana, Luis, Marta, Alberto]
+
+--- 36. distinct(): eliminar duplicados logicos ---
+[Ana, Luis, Marta]
+[Ana(25), Luis(30)]
+
+--- 37. limit(): restriccion y short-circuiting ---
+Primeros 3: [5, 2, 9]
+Tres menores: [1, 2, 4]
+
+--- 38. reduce y collect ---
+Suma con reduce: 10
+Pares con collect: [2, 4]
+
+--- 39. toList() vs collect(Collectors.toList()) ---
+toList: [2, 4]
+Collectors.toList modificable: [2, 4, 6]
+
+--- 40. mapToInt, sum, forEach y referencia a metodo ---
+Suma pares: 12
+2
+4
+6
+
+--- 41. count(): contador declarativo ---
+Total: 6
+Pares: 3
+
+--- 42. Referencias a metodo (::) ---
+[10, 20, 30]
+[2, 2, 2]
+10
+20
+30
+
+--- 43. findFirst, max, min y Optional ---
+Optional primer par: Optional[8]
+Valor o -1: 8
+Maximo: 9
+Minimo: 1
+
+--- 44. Collectors: groupingBy y counting ---
+Agrupado por paridad: {false=[1, 3, 5], true=[2, 4, 6]}
+Conteo por paridad: {false=3, true=3}
+
+--- 45. Integracion final: coleccion -> stream -> operaciones -> resultado ---
+Suma de cuadrados pares: 56
+{Ana=[Pedido[id=p1, cliente=Ana, total=120.0], Pedido[id=p3, cliente=Ana, total=200.0]]}

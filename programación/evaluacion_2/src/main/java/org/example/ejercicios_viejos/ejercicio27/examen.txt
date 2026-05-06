@@ -1,0 +1,79 @@
+;P;¿Cuál es la capital de Francia?
+París
+Madrid
+Roma
+Berlín
+;R;1
+10
+
+;P;¿Cuántos planetas hay en el sistema solar?
+7
+8
+9
+10
+;R;2
+10
+
+;P;¿Quién escribió "Don Quijote de la Mancha"?
+Gabriel García Márquez
+Miguel de Cervantes
+Pablo Neruda
+Federico García Lorca
+;R;2
+10
+
+;P;¿Cuál es el océano más grande del mundo?
+Océano Atlántico
+Océano Índico
+Océano Pacífico
+Océano Ártico
+;R;3
+10
+
+;P;¿En qué año llegó el hombre a la Luna?
+1965
+1969
+1972
+1959
+;R;2
+10
+
+;P;¿Cuál es el símbolo químico del agua?
+O2
+H
+CO2
+H2O
+;R;4
+10
+
+;P;¿Cuál es el idioma más hablado del mundo?
+Inglés
+Español
+Mandarín
+Árabe
+;R;3
+10
+
+;P;¿Cuántos continentes hay en la Tierra?
+5
+6
+7
+8
+;R;3
+10
+
+;P;¿Cuál es el animal terrestre más grande?
+Elefante africano
+Jirafa
+Rinoceronte
+Hipopótamo
+;R;1
+10
+
+;P;¿Qué instrumento mide los terremotos?
+Barómetro
+Termómetro
+Sismógrafo
+Anemómetro
+;R;3
+10

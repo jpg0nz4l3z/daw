@@ -1,0 +1,20 @@
+{
+  "id": 153,
+  "num": "153",
+  "name": "PatchMon",
+  "img": "http://example.com/patchmon.png",
+  "type": [
+    "Normal"
+  ],
+  "height": "1.00 m",
+  "weight": "10.0 kg",
+  "candy": "None",
+  "egg": "Not in Eggs",
+  "spawn_chance": 0,
+  "avg_spawns": 0,
+  "spawn_time": "N/A",
+  "multipliers": null,
+  "weaknesses": [
+    "Fighting"
+  ]
+}

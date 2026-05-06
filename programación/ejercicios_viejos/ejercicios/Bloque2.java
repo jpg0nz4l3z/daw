@@ -1,0 +1,506 @@
+package ejercicios;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Bloque2 {
+    //Ejercicio 1. Crear un programa Java que lea un número entero por teclado
+    //y calcule si es par o impar.
+    public static void parimpar(Scanner sc){  //En este caso hemos pedido el número en el main.
+        int entero = sc.nextInt();
+        if (entero%2==0){ //el mòdulo a%b es el resto de la división a/b.
+            //números pares son los múltiplos de 2,
+            //es decir donde a%2=0 es que a es par.
+            System.out.println("El número "+ entero + " es par");
+        }
+        else {
+            System.out.println("El número "+ entero + " es impar");
+        }
+    }
+
+    //Ejercicio 2. Programa que lea un número entero y muestre
+    //si el número es múltiplo de 10.
+    public static void entero10(Scanner sc){ //también lo escribimos en el main.
+        int entero = sc.nextInt();
+        if (entero%10==0){ //igual que el anterior pero ahora de 10.
+            System.out.println("El número " + entero + " es múltiplo de 10.");
+        } else {
+            System.out.println("El número " + entero + " no es múltiplo de 10.");
+        }
+    }
+
+    //Ejercicio 3. Programa que lea un carácter por teclado y compruebe
+    //si es una letra mayúscula.
+    public static void mayuscula(){
+        System.out.print("Danos una letra: ");
+        Scanner sc = new Scanner(System.in);
+        //escribimos la letra por teclado.
+        //nextLine() sólo permite escribir tipos String, con charAt() pasamos pasar a tipo char.
+        char letra = sc.nextLine().charAt(0); //coge el primer carácter del string que escribamos.
+        char letram = Character.toUpperCase(letra);//pasamos la letra creada a mayúsculas
+        if (letra==letram){//comparamos la mayúscula y la letra origen.
+            System.out.println("La letra " + letra + " está en mayúsculas");
+        }
+        else{
+            System.out.println("La letra " + letra + " no está en mayúsculas.");
+        }
+    }
+    //otra forma sin crear una variable para incluir la mayúscula:
+    //  if(character.isUpperCase(letra)...
+
+    //Ejercicio 4. Programa que pida un número y diga si es positivo o negativo.
+    public static void postnegat(Scanner sc){
+        //Math.abs(entero) nos da el valor absoluto de un número.
+        //es decir, su valor sin signo, o lo que es lo mismo, su valor positivo.
+        int entero = sc.nextInt();
+        if (Math.abs(entero)==entero){
+            System.out.println("El número " + entero + " es positivo.");
+        } else {
+            System.out.println("El número " + entero + " es negativo.");
+        }
+    }  //también podemos hacerlo condicionando el número a que sea mayor a cero para
+    //que nos dé positivo:   if(entero>=0) Positivo
+    //                       else negativo.
+
+    //Ejercicio 5. Programa que pida un número del 1 al 30 y diga si es primo o no.
+    public static boolean numprim(Scanner sc, int a, int b, int c){
+        //entramos por parámetros el Scanner sc,
+        //el límite inferior del número pedido, en este caso a=1.
+        //el límite superior del número pedido, en este caso b=30.
+        //el número de intentos para dar un número dentro de ese límite.
+        //Número primo es aquel que sólo es divisible por sí mismo y por uno.
+        //si realizamos divisiones sucesivas desde uno a él mismo y sólo
+        // contamos dos divisiones exactas es que es primo.
+        int m = 1;
+        boolean s = true;
+        salir:
+        while(m <= c){ //desde 1 hasta el número de intentos que demos
+            System.out.println("Dame un número entero entre " + a + " y "+ b + ": ");
+            int entero = sc.nextInt(); //introducimos el número entero por teclado.
+
+            if (entero >= a && entero <= b) { //Si está dentro del límite pedido
+                for (int i = 2; i < entero; i++) { //realizamos las divisiones sucesivas
+                    if (entero % i != 0) {
+                        System.out.println("El número " + entero + " no es primo");
+                        s = false;
+                        break salir;
+                    }
+                }
+            }
+            else {
+                System.out.println("el número no se encuentra entre 1 y 30.");
+                System.out.println(" Le restan " + (6-m) + " oportunidades");
+            }
+            m++;
+        }
+        return s; //retornamos un booleano que nos diga si es primo=true o no=false.
+    }
+
+    //Ejercicio 6. Programa que pida un número del 1 al 7 y diga el dia
+    //de la semana correspondiente.
+    public static void diasemana(Scanner sc){
+        for (int i=0; i<6; i++){
+            System.out.println("Dame un número entero: ");
+            int entero = sc.nextInt();
+            if (entero >= 1 && entero <= 7){ //si el entero está dentro del límite
+                //que nos dé el día de la semana correspondiente.
+                System.out.print("Hoy es ");
+                switch (entero) {  //un switch equivale a if-else anidados
+                    case 1 : System.out.println("lunes");break;
+                    case 2 : System.out.println("martes");break;
+                    case 3 : System.out.println("miércoles");break;
+                    case 4 : System.out.println("jueves");break;
+                    case 5 : System.out.println("viernes");break;
+                    case 6 : System.out.println("sábado");break;
+                    case 7 : System.out.println("domingo");break;
+                }
+                break;//salimos del for si nos da un día válido entre 1 y 7
+            }
+            else { //de lo contrario le pedimos que nos lo dé y le indicamos el número de intentos.
+                System.out.println("El número " + entero + " está fuera de rango");
+                System.out.println("Le quedan " + (5-i)+ " intentos.");
+            }
+        }
+    }
+
+    //Ejercicio 7. Programa que pida un número del 1 al 12 y diga el nombre del mes
+    //correspondiente.
+    public static void nombremes(Scanner sc){
+        //es igual al anterior pero para los meses del año.
+        for (int i=0; i<6; i++){
+            System.out.print("Dame un número del 1 al 12: ");
+            int entero = sc.nextInt();
+            if (entero >= 1 && entero <= 12){ //dentro del límite
+                switch(entero){
+                    case 1: System.out.println("enero");break;
+                    case 2: System.out.println("febrero");break;
+                    case 3: System.out.println("marzo");break;
+                    case 4: System.out.println("abril");break;
+                    case 5: System.out.println("mayo");break;
+                    case 6: System.out.println("junio");break;
+                    case 7: System.out.println("julio");break;
+                    case 8: System.out.println("agosto");break;
+                    case 9: System.out.println("septiembre");break;
+                    case 10: System.out.println("octubre");break;
+                    case 11: System.out.println("noviembre");break;
+                    case 12: System.out.println("diciembre");break;
+                }
+                break; //si ha entrado en el if y ha realizado la selección, que se salga.
+            }
+            else { //de lo contrario le volvemos a perdir el número e indicamos el número de intentos restantes.
+                System.out.println("El número " + entero + " está fuera de rango");
+                System.out.println("Le quedan " + (5-i)+ " intentos.");
+            }
+        }
+    }
+
+    //8. Programa que pida 6 números y los muestre en pantalla de menor a mayor.
+    //a. Primero se muestre el menor a los 6.
+    //b. Después se muestre el mayor de los 6.
+    //c. Después se muestren los 6 números ordenados de menor a mayor.
+    //d. Después se muestren los 6 números ordenados de mayor a menor.
+    public static void seisnumeros(Scanner sc){
+        System.out.println("Dame seis numeros: ");
+        //Las dos maneras de declarar e inicializar un Array de enteros:
+        int [] numeros = {0,0,0,0,0,0}; //primera manera
+        int [] numerosfinales = new int [14]; //segunda manera.
+        int menor, mayor;
+        numeros[0] = sc.nextInt();
+        menor = mayor = numeros[0];
+        for (int i = 1; i < 6; i++){
+            numeros[i] = sc.nextInt();
+            if (numeros[i] < menor) menor = numeros[i];
+            else if (numeros[i] > mayor) mayor = numeros[i];
+        }
+        System.out.println("a) El menor de los seis números es: " + menor);
+        System.out.println("b) El mayor de los seis números es: " + mayor);
+
+        Arrays.sort(numeros); //ordenamos el array de menor a mayor.
+        //podemos prescindir de las variables mayor y menor si, una vez ordenado el array,
+        //mostramos por pantalla que el menor es numero[0] y el mayor, numero[length(numero)-1]
+        System.out.println("c) Los seis números ordenados de menor a mayor son: \n"
+                + Arrays.toString(numeros));
+        //Arrays.stream(numeros).forEach(System.out::println);
+
+        System.out.println("d) Los seis números ordenados de mayor a menor son: ");
+        for (int j = numeros.length-1; j <=0; j--){
+            System.out.println(numeros[j]);
+        }
+        // También se puede hacer del siguiente modo:
+        // Integer [] numeros2;
+        //for (int i = 0; i < numeros.length; i++) numeros2[i] = numeros[i];
+        // Arrays.sort(numeros2, Collections.reverseOrder());
+            /*
+            //a.
+            numerosfinales[0] = numeros[0]; //incluimos en la primera posición del array resultado
+            //el primer elemento del array origen
+            //puesto que lo hemos ordenado será el menor valor introducido.
+            //b.
+            numerosfinales[1] = numeros[5];//en la segunda posición del array resultado
+            //igual pero con el último elemento, que será el mayor.
+            //c.
+            //System.arraycopy(numeros, 0, numerosfinales, 2, numeros.length);
+            for (int j = 0; j < numeros.length;j++){
+                numerosfinales[j+2]=numeros[j]; //rellenamos el array destino a partir de su tercer elemento
+                //con todos los del array origen ordenados
+            }
+            //d.
+            //del array destino con los del array origen invertidos de posición.
+            //Esto lo conseguimos restando el número de iteración
+            //al número total de elementos del array origen menos uno
+            //el menos uno, es porque la última posición del array
+            //   se corresponde con su longitud menos uno.
+            for (int k = 0; k < numeros.length;k++) {
+                numerosfinales[k + 8] = numeros[numeros.length - k - 1]; //rellenamos el resto de elementos
+            }
+
+            // El resultado por pantalla.
+            for(int l=0; l<numerosfinales.length;l++) //recorremos el array destino para mostrar
+                //cada uno de sus elementos.
+                System.out.print(numerosfinales[l] + ", ");
+                */
+
+    }
+
+
+    //9. Programa que imprima correcto si se introduce los caracteres S, N o punto.
+    public static void correcto(Scanner sc){
+        System.out.println("Introduce un carácter por teclado");
+        char a = sc.nextLine().charAt(0);
+        // con ||, con tal de que una de las condiciones sea cierta, entra en el if.
+        if (a=='N' || a=='S' || a=='.'){
+            System.out.println("CORRECTO");
+        }
+        else {System.out.println("INCORRECTO");}
+    }
+
+    //10. Programa que pida una letra y detecte si es una vocal.
+    public static void letra(Scanner sc){
+        System.out.println("Dame una letra: ");
+        String b = sc.nextLine();
+        char a = b.toLowerCase().charAt(0); //pasamos a minúscula para no tener que comparar también las mayúsculas
+        //con || con que una de las condiciones sea cierta ya entra en el if.
+        if (a=='a' || a=='e' || a=='i' || a=='o' || a=='u'){
+            System.out.println("La letra " + b + " es una vocal");
+        }else System.out.println("La letra " + b + " no es una vocal");
+    }
+
+    //11. Programa que introduzca tres números y detecte si se han introducido en
+    //orden creciente.
+    public static void tresnumeros(Scanner sc){
+        System.out.println("Dame el primer número: ");
+        int a = sc.nextInt();
+        System.out.println("Dame el segundo número: ");
+        int b = sc.nextInt();
+        System.out.println("Dame el tercer número: ");
+        int c = sc.nextInt();
+        //con and (&&), puesto que las dos condiciones deben cumplirse.
+        if ((a < b) && (b < c)){
+            System.out.println("Los números " +
+                    a + ", " +
+                    b + " y " +
+                    c +
+                    " se han introducido en orden creciente");
+        }
+    }
+
+    //generalización a todos los números que queramos:
+    public static void variosnumeros(Scanner sc, int num){
+        int m = 1, a, b;
+        System.out.println("Dame el primer número: ");
+        b=sc.nextInt();
+        do {
+            System.out.println("Dame otro número: ");
+            a = sc.nextInt();
+            if (a < b) { //comparamos el valor de la iteración anterior con el actual.
+                System.out.println("Los números no se han introducido de forma creciente");
+                return;
+            }
+            b = a; //Para conservar el valor de a en la próxima iteración.
+            m++;
+        } while (m <= num);
+        System.out.println("Los números se han introducido de forma creciente");
+    }
+
+    public static void variosnumeros2(Scanner sc, int num){
+        int a, b=0;
+        for(int i = 1; i < num; i++){
+            if(i==1){
+                System.out.println("Dame el primer número: ");
+                b = sc.nextInt(); //este sería el i==0
+            }
+            System.out.println("Dame otro número: ");
+            a = sc.nextInt(); //el primero sería i==1
+            if (b>a) b = a;
+            else {
+                System.out.println("Los números no están ordenados de forma descendente.");
+                return;
+            }
+        }
+        System.out.println("Los números se han introducido de forma descendente.");
+    }
+
+    //12. Programa que pida tres números e indique si el tercero
+    //es igual a la suma del primero y el segundo.
+    public static void tresnumerossuma(Scanner sc){
+        System.out.println("Dame tres números: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        if (a==b+c){
+            System.out.println(a + " es la suma de " + b + " y " + c);
+        }
+    }
+
+    //13. Programa que tome dos números del 1 al 5 y diga si ambos son primos.
+    public static void dosprimos(Scanner sc){
+        //puesto que ya tenemos un método que calcula los números primos
+        // ejercicio 5. no es necesario que volvamos a implementarlo.
+        //podemos invocar al método para obtener si el número es primo.
+        boolean primo = numprim(sc, 1, 5, 3); //si es primo, primo=true, si no primo=false.
+        boolean primo1 = numprim(sc, 1, 5, 3); //lo mismo con primo1.
+        if (primo && primo1) //comprobamos que ambos lo sean.
+            System.out.println("Ambos números son primos");
+    }
+
+    //14. Programa que tome tres números y diga:
+    //-Si el tercero es multiplicación de los otros dos.
+    //-Si el tercero es la división de los otros dos.
+    //-Si el tercero es el módulo de los otros dos.
+    public static void otrostresnumeros(Scanner sc){
+        System.out.println("Dame tres números: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        if (c == a * b)System.out.println("el número " + c + " es la multiplicación de " + a + " y " + b);
+
+        //controlamos que b, el denominador, no sea cero.
+        try {
+            if (c == a / b) System.out.println("el número " + c + " es la división de " + a + " y " + b);
+        }catch(ArithmeticException e){System.err.println("Error: " + e);}
+
+        if (c == a % b) System.out.println("el número " + c + " es el módulo de " + a + " y " + b);
+    }
+
+    //15. Programa que pida un año y diga si es bisiesto o no:
+    //- Un año es bisiesto si es múltiplo de 4 y no es múltiplo de 100
+    //  excepto los múltiplos de 400, que sí lo son.
+    public static void bisiesto(Scanner sc){
+        System.out.println("Introduzca un número entre 0 y 2024");
+        int cont = 0; //para contabilizar por medio de un while el número de intentos
+        while (cont < 5){ //mientras le queden intentos que dé el número.
+            int b = sc.nextInt();
+            if ( b >= 0 && b <= 2024){
+                if((b % 4 == 0 && b % 100 != 0) || b % 400 == 0)
+                    System.out.println("El año "+ b + " es bisiesto");
+                else
+                    System.out.println("El año "+ b + " no es bisiesto");
+                break; //si ha entrado en el if y ha realizado las operaciones que se salga del while.
+            }else
+                System.out.println("Introduzca un año entre 0 y 2024.");
+            cont++; //incrementamos en uno el número de intentos.
+            //con un for no sería necesario un cont porque el incremento es automático.
+        }
+    }
+
+    //16. Programa que muestre un menú para pasar de kg a otra unidad.
+    //    Pedir un valor en Kg y mostrar ese valor por pantalla pasado a la nueva unidad.
+    //    Las unidades del menú son: Hectogramo, Decagramo, gramos, decigramos, centigramos y miligramos.
+    public static void peso(Scanner sc){
+        System.out.println("Dame un peso en Kilogramos: ");
+        int a = sc.nextInt();
+        System.out.println("""
+                    Menú de unidades de conversión:\s
+                        1. Hectogramos\s
+                        2. Decagramos\s
+                        3. gramos\s
+                        4. decigramos\s
+                        5. centigramos\s
+                        6. miligramos\s
+                    """);
+        System.out.println();
+        System.out.println("¿A qué unidad quiere convertir el peso dado?: ");
+        String b= sc.nextLine(); //introducimos la unidad destino.
+        switch(b){ //en este caso hemos implementado un switch de string.
+            case "Hectogramos": System.out.println(a*10+ "Hg");break;
+            case "Decagramos": System.out.println(a*100+ "Dg");break;
+            case "gramos": System.out.println(a*1000+ "gr");break;
+            case "decigramos": System.out.println(a*10000+"dg");break;
+            case "centigramos": System.out.println(a*100000+"cg");break;
+            case "miligramos": System.out.println(a*1000000+"mg");break;
+            default:System.out.println("A esta unidad no se puede convertir el peso dado.");break;
+        }
+    }
+
+    //17. Programa que lea un importe bruto y nos dé su importe neto.
+    //    si es mayor a 15.000 se le aplicará un 16%
+    //    en caso contrario se le aplicará un 10%.
+    public static void importe(Scanner sc){
+        System.out.println("Introduzca por teclado el importe bruto: ");
+        //llamamos importe bruto al valor original,
+        //si fuera el precio de algo el neto sería igual al bruto más los impuestos.
+        //si fuera el sueldo de una persona, el neto sería el bruto menos los devengos.
+        //Cuando se habla de importe, se refiere al precio de un objeto.
+        int a = sc.nextInt();
+        float b;
+        if (a>15000){
+            b = a + a * 0.16f;  //el precio neto sería igual al precio bruto más los impuestos del 16%.
+        }
+        else{
+            b= a + a * 0.1f;
+        }
+        System.out.println("El importe neto es de" + b + "€");
+    }
+
+    //18. Programa que lea una hora en Horas:Minutos:Segundos y
+    //   diga la hora que es 50 segundos después.
+    public static void hora(Scanner sc){
+        System.out.println("Deme una hora: "); //pedimos la hora por teclado.
+        int a = sc.nextInt();
+        if (a >= 0 && a < 24){ //controlamos que la hora se encuentre entre 0 y 23.
+            System.out.println("Deme los minutos: "); //pedimos los minutos.
+            int b = sc.nextInt();
+            if(b >= 0 && b < 60){   //controlamos que los minutos estén entre 0 y 59.
+                System.out.println("Deme los segundos: "); //pedimos los segundos.
+                int c = sc.nextInt();
+                if (c >= 0 && c < 60){ //controlamos que los segundos se encuentren entre 0 y 59.
+                    c += 50; // sumamos los 50 segundos a los actuales.
+                    if(c >= 60){ //si la suma de los segundos dados más los 50 que añadimos es mayor o igual a 60.
+                        c -= 60;  //restaríamos 60 a los segundos finales.
+                        b++;   //añadiríamos un minuto a los minutos finales.
+                        if (b == 60){ //si al añadir un minuto, resulta que se han llegado a 60
+                            b = 0; //ponemos los minutos a cero y
+                            a++;  //añadimos una hora a la hora final.
+                            if (a == 24) a = 0; //si al añadir una hora hemos llegado a las 24 horas, la ponemos a cero.
+                        }
+                    }
+                    System.out.println("La hora resultante es: " + a + ":" + b + ":" + c); //damos la hora final.
+                }else System.out.println("Esos segundos no son correctos.");
+            }else System.out.println("Esos minutos no son correctos.");
+        }else System.out.println("Esa hora no es correcta.");
+    }
+
+    //Otra posible forma
+    public static void hora2(Scanner sc){
+        System.out.println("Dame una Hora entre 0 y 23: ");
+        int hora = sc.nextInt();
+        System.out.println("Dame unos minutos entre 0 y 59: ");
+        int minutos = sc.nextInt();
+        System.out.println("Dame unos segundos entre 0 y 59: ");
+        int segundos = sc.nextInt();
+        if (hora < 0 || hora > 23 || minutos < 0 || minutos > 59 || segundos < 0 || segundos > 59){
+            System.out.println("La hora dada es incorrecta");
+        }
+        else {
+            int segundos_totales = hora * 3600 + minutos * 60 + segundos + 50;
+            int hora_final = segundos_totales / 3600;
+            int resto = segundos_totales % 3600;
+            int minuto_final = resto / 60;
+            int segundo_final = resto % 60;
+
+            if (hora_final >= 24) hora_final %= 24; //Para cualquier incremento de segundos.
+            System.out.println("La hora final es: " + hora_final + ":" + minuto_final + ":" + segundo_final);
+        }
+    }
+    //19. De ejercicio puntuable para la nota de evaluación.
+    //en este caso hablamos del sueldo de una persona,
+    //luego el sueldo neto será la resta del sueldo bruto y los devengos porcentuales.
+
+//-------------Ejercicio de recursividad: Fibonacci. ----------------
+
+//Programa que muestre los cincuenta primeros números empezando por cero y uno,
+//obtenidos tras sacar el término actual como la suma de los dos anteriores.
+//a3 = a2 + a1.
+
+    //sin recursividad.
+    //en nuestro caso c=a3, b=b2 y a=a1.
+    public static void fibonacci(){ //incluimos a y b por parámetros
+        int a = 0;
+        int b = 1;
+        //para la sucesión completa empezaríamos en a=0 y b=1.
+        int cont = 1; //contador para limitar el número de iteraciones del while.
+        while(cont<50){
+            //la c de esta iteración será la suma de a+b de la iteración anterior.
+            int c = a + b;
+            System.out.println(c);
+            a=b; // a será el valor de b de la iteración anterior.
+            b=c; //a b le incluimos la suma de a+b de la iteración anterior.
+            cont++; //incrementamos el contador en 1 para cada iteración.
+        }
+    }
+
+    //con recursividad.
+    //A cada llamada a la función hacemos que a2=b1 y b2=a1+b1
+    public static void fibonaccirec(long a, long b, int contador){
+        if (contador == 50){
+            System.out.println("Último término: " + b + " De un total de: " + contador);
+        }
+        else {
+            System.out.println(b + " - " + contador);
+            fibonaccirec(b, a + b, contador + 1);
+            //donde está la a, ponemos la b.
+            //donde está la b, ponemos a+b.
+        }
+    }
+}

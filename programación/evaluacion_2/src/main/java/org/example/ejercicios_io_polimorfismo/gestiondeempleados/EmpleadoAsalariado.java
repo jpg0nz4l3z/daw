@@ -1,0 +1,18 @@
+package org.example.ejercicios_io_polimorfismo.gestiondeempleados;
+
+public class EmpleadoAsalariado extends Empleado {
+
+    public EmpleadoAsalariado(int id, String nombre, int edad, double salario) {
+        super(id, nombre, edad, salario);
+    }
+
+    @Override
+    public double calcularSalario() {
+        return salario;
+    }
+
+    @Override
+    public int getTipo() {
+        return 1;
+    }
+}

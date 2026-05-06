@@ -1,0 +1,128 @@
+================================================================================
+INSTRUCCIONES DE CONFIGURACIÓN - ejercicio-pokemon-db con MySQL
+================================================================================
+
+REQUISITOS PREVIOS:
+- MySQL corriendo en localhost:3319
+- Usuario 'quevedo' con contraseña '1234'
+- Python 3.9+
+
+================================================================================
+PASO 1: INSTALAR DEPENDENCIAS
+================================================================================
+
+1.1 Crear entorno virtual (opcional pero recomendado):
+    python -m venv .venv
+
+1.2 Activar entorno virtual:
+    Windows:
+      .venv\Scripts\activate
+    macOS/Linux:
+      source .venv/bin/activate
+
+1.3 Instalar dependencias:
+    pip install -r requirements.txt
+
+================================================================================
+PASO 2: CREAR LA BASE DE DATOS
+================================================================================
+
+OPCIÓN A: Usar el script helper (RECOMENDADO)
+    python setup_db.py
+
+OPCIÓN B: Ejecutar manualmente en MySQL (Windows)
+    mysql -h localhost -P 3319 -u quevedo -p1234 < data\init_db.sql
+
+OPCIÓN C: Importar en cliente MySQL interactivo
+    mysql -h localhost -P 3319 -u quevedo -p
+    mysql> source data/init_db.sql;
+
+================================================================================
+PASO 3: EJECUTAR LA APLICACIÓN
+================================================================================
+
+    python app/app.py
+
+================================================================================
+USO BÁSICO
+================================================================================
+
+1. IMPORTAR DATOS (Primera vez):
+   - Selecciona opción 31 en el menú principal
+   - Esto importa los 151 pokémons del archivo data/pokemons.json a la BD
+
+2. ACCEDER AL MENÚ CRUD:
+   - Selecciona opción 32 en el menú principal
+   - Aquí puedes:
+     * Crear nuevos pokémons
+     * Listar todos los pokémons de la BD
+     * Buscar por ID o nombre
+     * Modificar pokémons existentes
+     * Eliminar pokémons
+     * Ver el total de pokémons
+
+3. CONSULTAS ANTIGUAS (desde JSON):
+   - Las opciones 1-29 del menú principal siguen usando el JSON
+   - Son solo lectura (opciones 26-29 modifican el JSON)
+
+================================================================================
+VERIFICACIÓN
+================================================================================
+
+Después de setup_db.py:
+✓ Deberías ver "Setup completado correctamente"
+
+Después de ejecutar la app:
+✓ El menú principal debería mostrar sin errores
+✓ Opción 31 debería importar los datos
+✓ Opción 32 debería abrir el menú de BD sin errores
+
+================================================================================
+PROBLEMAS COMUNES
+================================================================================
+
+❌ "No module named 'pymysql'"
+   → pip install pymysql
+
+❌ "Error de conexión a MySQL"
+   → Verifica que MySQL está corriendo en puerto 3319
+   → Verifica usuario 'quevedo' y contraseña '1234'
+   → Ejecuta: python setup_db.py
+
+❌ "No such file or directory: 'pokemondb'"
+   → La BD no existe. Ejecuta: python setup_db.py
+
+❌ "ImportError en app/ui/main.py"
+   → Verifica que estás ejecutando desde el directorio raíz del proyecto
+   → Ejecuta: python app/app.py
+
+================================================================================
+ARCHIVOS IMPORTANTES
+================================================================================
+
+Nueva estructura:
+├── requirements.txt          ← Dependencias (pymysql, cryptography)
+├── setup_db.py              ← Script para crear la BD
+├── data/
+│   └── init_db.sql          ← Script SQL para crear tablas
+├── app/
+│   ├── data/
+│   │   ├── db_connection.py         ← Conexión a MySQL
+│   │   └── pokemon_db_repository.py ← CRUD para MySQL
+│   ├── domain/
+│   │   └── pokemon_db_manager.py    ← Lógica de negocio para BD
+│   └── ui/
+│       ├── main.py                  ← Menú principal (actualizado)
+│       └── db_menu.py               ← Menú CRUD para BD
+└── README_DB.md             ← Documentación detallada
+
+================================================================================
+SIGUIENTES PASOS
+================================================================================
+
+1. Ejecuta: python setup_db.py
+2. Ejecuta: python app/app.py
+3. Selecciona opción 31 para importar
+4. Selecciona opción 32 para acceder al CRUD de BD
+
+================================================================================

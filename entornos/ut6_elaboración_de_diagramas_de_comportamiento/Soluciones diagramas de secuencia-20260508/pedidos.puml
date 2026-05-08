@@ -1,0 +1,48 @@
+@startuml
+skinparam sequenceParticipant underline
+hide footbox
+
+title Gestión de pedidos
+
+actor Cliente 
+participant ":Pedido" as Pedido
+participant ":Producto" as Producto
+
+Cliente ++
+Cliente -> Pedido++: 1: RealizarPedido
+Pedido -> Pedido++: 1.1: buscarCliente
+deactivate Pedido
+
+alt buscarCliente == false
+    Cliente <- Pedido : 1.1.1: pedirDatos
+    Cliente -> Pedido : 1.1.2: introducirDatos
+    Pedido -> Pedido++: 1.1.2.1: crearCliente
+    deactivate Pedido
+end
+
+Pedido -> Producto++ : 1.2: recuperarProductos
+Pedido <-- Producto : 1.3: listaProductos
+deactivate Producto
+Cliente <-- Pedido : 1.3.1: mostrarProductos
+deactivate Pedido
+
+Cliente -> Pedido++: 2: seleccionarProducto
+Pedido -> Producto++ : 2.1: recuperarDatosProducto
+Cliente <-- Producto : 2.2: mostrarDatosProducto
+deactivate Producto
+deactivate Pedido
+
+Cliente -> Cliente++ : 3: confirmarSelección
+deactivate Cliente
+
+alt confirmarSelección == true
+    Cliente -> Pedido++: 3: confirmarPedido
+    Cliente <-- Pedido: 3.1: muestraIDPedido
+    deactivate Pedido
+else confirmarSelección == false
+    Cliente -> Pedido++ : 3.1: cancelarPedido
+    destroy Pedido
+
+end
+
+@enduml
